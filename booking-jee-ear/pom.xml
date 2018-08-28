@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>be.bo.booking</groupId>
+	<artifactId>booking-jee-ear</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>booking-jee-ear</name>
+	<packaging>ear</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>be.bo.booking</groupId>
+			<artifactId>booking-jee-rest</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<artifactId>booking-jee-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<groupId>be.bo.booking</groupId>
+			<type>jar</type>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<configuration>
+					<applicationName>booking-jee-ear</applicationName>
+					<displayName>booking-jee-ear</displayName>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+					<modules>
+						<webModule>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>booking-jee-rest</artifactId>
+							<context-root>booking</context-root>
+						</webModule>
+						<!-- ejbModule> <groupId>${project.groupId}</groupId> <artifactId>booking-jee</artifactId> 
+							</ejbModule -->
+
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

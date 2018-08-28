@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
+
+	<persistence-unit name="User_PersistenceUnit" transaction-type="JTA">
+		<description>This persistent unit manages entities of the booking-jee application.</description>
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+
+        <mapping-file>META-INF/sequence.xml</mapping-file>
+        
+		<!-- SBF entities -->
+		<class>be.bo.user.User</class>
+		
+
+		<!-- Hibernate configuration -->
+		<properties>
+			<property name="hibernate.archive.autodetection" value="class, hbm" />
+			<property name="hibernate.connection.autocommit" value="false" />
+			<property name="hibernate.connection.release_mode" value="auto" />
+			<property name="hibernate.current_session_context_class" value="jta" />
+			<property name="hibernate.id.new_generator_mappings" value="false" />
+			<property name="hibernate.max_fetch_depth" value="3" />
+			<property name="hibernate.transaction.auto_close_session" value="false" />
+			<property name="hibernate.transaction.flush_before_completion" value="false" />
+			<property name="hibernate.ejb.cfgfile" value="hibernate.cfg.xml"/>
+			<!-- By default, Bean Validation (and Hibernate Validator) is activated. Disable it and enable the validation manually in the code -->
+			<property name="javax.persistence.validation.mode" value="none"/>
+		</properties>
+	</persistence-unit>
+
+</persistence>

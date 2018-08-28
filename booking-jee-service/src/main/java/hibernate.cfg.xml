@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+	<session-factory>
+		<!-- SQL stdout logging -->
+		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.format_sql">false</property>
+		<property name="use_sql_comments">false</property>
+
+		<!-- Hibernate dialect: choose h2 or oracle and change the standalone.xml 
+			in consequences -->
+		<property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
+		<!-- <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property> -->
+
+		<!-- Transaction manager lookup: switch to BTM in tests -->
+		<property name="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>
+		<!-- <property name="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.BTMTransactionManagerLookup"/> -->
+
+		<!-- Set value to "validate" if you don't want hibernate create the database 
+			for you -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		<!-- <property name="hibernate.hbm2ddl.auto">validate</property> -->
+
+	</session-factory>
+</hibernate-configuration>
