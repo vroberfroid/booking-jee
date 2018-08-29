@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -51,4 +53,18 @@ public class BookingController {
 		return Response.ok().build();
 	}
 	
+	@PUT
+	@Consumes({"application/json"})
+	public Response updateUser(User user) {		
+		service.updateUser(user);
+		return Response.ok().build();
+	}
+	
+	@DELETE
+	@Path("/{id}")
+	public Response deleteUser(@PathParam("id") Long id) {
+		System.out.println("*** In BookingController - Delete user "+ id);
+		service.deleteUser(id);
+		return Response.ok().build();
+	}
 }
