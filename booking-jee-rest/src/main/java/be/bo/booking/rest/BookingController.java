@@ -15,13 +15,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import be.bo.user.User;
-import be.bo.user.service.UserService;
+import be.bo.user.service.api.IUserService;
 
 @Path("/users")
 public class BookingController {
 
 	@Inject
-	UserService service;
+	IUserService service;
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

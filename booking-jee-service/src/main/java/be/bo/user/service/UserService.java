@@ -9,10 +9,13 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import be.bo.user.User;
+import be.bo.user.annotation.Logged;
+import be.bo.user.service.api.IUserService;
 
+@Logged
 @ApplicationScoped
 @Transactional
-public class UserService {
+public class UserService implements IUserService {
 
 	public static final String PERSISTENCEUNIT = "User_PersistenceUnit";
 
